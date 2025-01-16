@@ -1,11 +1,14 @@
 package com.example.rdd.Domain.Platform;
 
-import com.example.rdd.Domain.AppUser.AppUser;
 import com.example.rdd.Domain.Auditable;
+import com.example.rdd.Domain.UploadFile.UploadFile;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.IOException;
+
 @Getter
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id", callSuper = false)
@@ -21,15 +24,31 @@ public class Platform extends Auditable {
     @Column(name = "name_platform")
     private String namePlatform;
 
-    @Column(name = "description_platform")
+    @Column(name = "description_platform", length = 1000)
     private String descriptionPlatform;
 
-    @Column(name = "url_video")
+    @Column(name = "url_video", length = 1000)
     private String urlVideo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private AppUser registrationUser;
+    @Column(name = "url_platform")
+    private String urlPlatform;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private StatusPlatform statusPlatform;
+    @Column(name = "text_tutorial")
+    private String textTutorial;
+
+    @ManyToOne
+    private UploadFile logo;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private AppUser registrationUser;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private StatusPlatform statusPlatform;
+
+    public Platform(PlatformRequestDTO data) throws IOException {
+        this.namePlatform = data.platform().getNamePlatform();
+        this.descriptionPlatform = data.platform().getDescriptionPlatform();
+        this.urlVideo = data.platform().getUrlVideo();
+        this.urlPlatform = data.platform().getUrlPlatform();
+    }
 }

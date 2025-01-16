@@ -1,4 +1,4 @@
-package com.example.rdd.Domain.Platform;
+package com.example.rdd.Domain.AccessType;
 
 import com.example.rdd.Domain.Auditable;
 import jakarta.persistence.*;
@@ -8,15 +8,16 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id", callSuper = false)
-@Entity(name = "status_platform")
-public class StatusPlatform extends Auditable {
+@Entity(name = "access_type")
+public class AccessType extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_status_platform")
+    @Column(name = "id_access_type")
     @Setter
     private Long id;
 
-    @Column(name = "description_status_platform")
+    @Column(name = "description_access_type")
     private String description;
+
 }

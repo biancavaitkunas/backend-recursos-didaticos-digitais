@@ -1,19 +1,20 @@
 package com.example.rdd.Service;
 
 import com.example.rdd.Domain.AppUser.AppUser;
+import com.example.rdd.Repository.AppUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface AppUserService {
+@Service
+public class AppUserService extends GenericService<AppUser, Long> {
 
-    AppUser insertUser(AppUser user);
+    @Autowired
+    AppUserRepository repository;
 
-    List<AppUser> listAll();
-
-    AppUser findById(Long id);
-
-    AppUser updateUser(AppUser user);
-
-    void deleteUser(Long id);
+    public List<AppUser> findByLogin(final String login) {
+        return repository.findByLogin(login);
+    }
 
 }
