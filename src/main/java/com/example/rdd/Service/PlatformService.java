@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
 
 @Service
 public class PlatformService extends GenericService<Platform, Long> {
@@ -43,5 +44,18 @@ public class PlatformService extends GenericService<Platform, Long> {
                 .description(platform.getDescriptionPlatform())
                 .logo(logoBase64)
                 .build();
+    }
+
+    public List<PlatformResponseDTO> getAllPlatformsDto() {
+        final var platforms = repository.findAll();
+
+        return platforms.stream().map(platform -> {
+            final var logoBase64 = Base64.getEncoder().encodeToString(uploadFileService.findById(platform.getLogo().getId()).orElseThrow().getImage());
+            return PlatformResponseDTO.builder()
+                    .name(platform.getNamePlatform())
+                    .description(platform.getDescriptionPlatform())
+                    .logo(logoBase64)
+                    .build();
+        }).toList();
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/platform")
@@ -35,5 +36,10 @@ public class PlatformController extends GenericController<Platform, Long> {
     @GetMapping("dto/{id}")
     public ResponseEntity<PlatformResponseDTO> getPlatformDto(@PathVariable Long id) {
         return new ResponseEntity<>(service.getPlatformDto(id), HttpStatus.OK);
+    }
+
+    @GetMapping("dto/list")
+    public ResponseEntity<List<PlatformResponseDTO>> getAllPlatformsDto() {
+        return new ResponseEntity<>(service.getAllPlatformsDto(), HttpStatus.OK);
     }
 }
