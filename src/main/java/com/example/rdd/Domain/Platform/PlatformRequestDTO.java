@@ -7,5 +7,5 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Builder
-public record PlatformRequestDTO(Platform platform, MultipartFile logo, List<Subfilter> subfilters) {
+public record PlatformRequestDTO(Platform platform, MultipartFile logo, MultipartFile presentationImage, MultipartFile textTutorial, List<Subfilter> subfilters) {
 }

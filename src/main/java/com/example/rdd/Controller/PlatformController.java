@@ -23,10 +23,12 @@ public class PlatformController extends GenericController<Platform, Long> {
     private PlatformService service;
 
     @PostMapping("/logo")
-    public ResponseEntity<PlatformResponseDTO> create(@RequestPart("platform") String platformJson, @RequestPart("file") MultipartFile logo, @RequestPart("subfilters") String subfilters) throws IOException {
+    public ResponseEntity<PlatformResponseDTO> create(@RequestPart("platform") String platformJson, @RequestPart("logo") MultipartFile logo, @RequestPart("presentationImage") MultipartFile presentationImage, @RequestPart("textTutorial") MultipartFile textTutorial, @RequestPart("subfilters") String subfilters) throws IOException {
         final var requestDTO = PlatformRequestDTO.builder()
                 .platform(Util.convertJson(platformJson, Platform.class))
                 .logo(logo)
+                .presentationImage(presentationImage)
+                .textTutorial(textTutorial)
                 .subfilters(Util.convertJsonToList(subfilters, Subfilter.class))
                 .build();
         final var createdEntity = service.createPlatformWithLogoAndSubfilters(requestDTO);

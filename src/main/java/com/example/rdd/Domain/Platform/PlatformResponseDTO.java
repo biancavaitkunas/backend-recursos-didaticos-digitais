@@ -1,16 +1,21 @@
 package com.example.rdd.Domain.Platform;
 
-import com.example.rdd.Domain.UploadFile.UploadFile;
+import com.example.rdd.Domain.Subfilter.Subfilter;
+import com.example.rdd.Service.PlatformSubfilterService;
 import lombok.Builder;
 
-@Builder
-public record PlatformResponseDTO(String name, String description, String urlVideo, String urlPlatform, String logo) {
+import java.util.List;
 
-    public PlatformResponseDTO(final Platform platform, final String logo) {
-        this(platform.getNamePlatform(), platform.getDescriptionPlatform(), platform.getUrlVideo(), platform.getUrlPlatform(), logo);
+@Builder
+public record PlatformResponseDTO(Long id, String name, String description, String urlVideo, String urlPlatform, String logo, String presentationImage, String textTutorial, List<String> subfilters) {
+
+    static PlatformSubfilterService platformSubfilterService;
+
+    public PlatformResponseDTO(final Platform platform, final String logo, final String presentationImage, final String textTutorial) {
+        this(platform.getId(), platform.getNamePlatform(), platform.getDescriptionPlatform(), platform.getUrlVideo(), platform.getUrlPlatform(), logo, presentationImage, textTutorial, platformSubfilterService.getSubfiltersByPlatform(platform).stream().map(Subfilter::getDescription).toList());
     }
 
     public PlatformResponseDTO(final Platform platform) {
-        this(platform.getNamePlatform(), platform.getDescriptionPlatform(), platform.getUrlVideo(), platform.getUrlPlatform(), null);
+        this(platform.getId(), platform.getNamePlatform(), platform.getDescriptionPlatform(), platform.getUrlVideo(), platform.getUrlPlatform(), null, null, null, null);
     }
 }

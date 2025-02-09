@@ -33,11 +33,14 @@ public class Platform extends Auditable {
     @Column(name = "url_platform")
     private String urlPlatform;
 
-    @Column(name = "text_tutorial")
-    private String textTutorial;
-
     @ManyToOne
     private UploadFile logo;
+
+    @ManyToOne
+    private UploadFile presentationImage;
+
+    @ManyToOne
+    private UploadFile textTutorial;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private AppUser registrationUser;

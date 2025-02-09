@@ -1,10 +1,13 @@
 package com.example.rdd.Domain.AppUser;
 
+import lombok.Builder;
+
 import java.time.LocalDate;
 
-public record AppUserResponseDTO(Long id, String firstName, String lastName, String email, LocalDate birthDate) {
+@Builder
+public record AppUserResponseDTO(Long id, String firstName, String lastName, String email, LocalDate birthDate, String login) {
 
     public AppUserResponseDTO(final AppUser user) {
-        this(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getBirthDate());
+        this(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getBirthDate(), user.getUsername());
     }
 }
