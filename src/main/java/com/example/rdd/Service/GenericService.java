@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -22,19 +23,23 @@ public abstract class GenericService<T, ID> {
     }
 
     public T update(ID id, T entity) {
-        if (!repository.existsById(id)) {
-            throw new EntityNotFoundException(id.toString());
-        }
+        final var existingEntity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(id.toString()));
 
         try {
-            final var idField = findIdField(entity.getClass());
-            idField.setAccessible(true);
-            idField.set(entity, id);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to set ID field on entity", e);
+            for (var field : entity.getClass().getDeclaredFields()) {
+                field.setAccessible(true);
+                final var newValue = field.get(entity);
+
+                if (Objects.nonNull(newValue)) {
+                    field.set(existingEntity, newValue);
+                }
+            }
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("Failed to update entity fields", e);
         }
 
-        return repository.save(entity);
+        return repository.save(existingEntity);
     }
 
     public Optional<T> findById(ID id) {
