@@ -51,16 +51,15 @@ public class AuthorizationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody @Valid AppUser appUser) {
-        if (isPresent(this.repository.findByUsername(appUser.getUsername())))
-            return ResponseEntity.badRequest().build();
+    public ResponseEntity<AppUser> register(@RequestBody @Valid AppUser appUser) {
+        if (isPresent(this.repository.findByUsername(appUser.getUsername()))) return ResponseEntity.badRequest().build();
 
         final var user = appUser.toBuilder()
                 .password(passwordEncoder.encode(appUser.getPassword()))
                 .role(UserRole.USER)
                 .build();
         repository.save(user);
-        return ResponseEntity.ok("Cadastro realizado com sucesso!");
+        return ResponseEntity.ok(repository.save(user));
     }
 
     @PostMapping("/change-password")

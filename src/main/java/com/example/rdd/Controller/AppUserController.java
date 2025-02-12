@@ -13,13 +13,4 @@ public class AppUserController extends GenericController<AppUser, Long> {
     @Autowired
     private AppUserService service;
 
-//    @Override
-//    public ResponseEntity<AppUser> create(final AppUser entity) {
-//        return new ResponseEntity<>(service.create(entity), HttpStatus.CREATED);
-//    }
-
-//    @GetMapping("login/{login}")
-//    public ResponseEntity<List<AppUser>> findByLogin(@PathVariable String login) {
-//        //return ResponseEntity.ok(service.findByLogin(login));
-//    }
 }

@@ -1,5 +1,6 @@
 package com.example.rdd.Repository;
 
+import com.example.rdd.Domain.AppUser.AppUser;
 import com.example.rdd.Domain.AppUserCollaborationType.AppUserCollaborationType;
 import com.example.rdd.Domain.CollaborationType.CollaborationType;
 import com.example.rdd.Domain.Platform.Platform;
@@ -13,4 +14,5 @@ import java.util.List;
 public interface AppUserCollaborationTypeRepository extends JpaRepository<AppUserCollaborationType, Long> {
 
     List<AppUserCollaborationType> findAppUserByCollaborationType(CollaborationType collaborationType);
+//    List<AppUserCollaborationType> findAppUserCollaborationTypesByUser(AppUser user);
 }

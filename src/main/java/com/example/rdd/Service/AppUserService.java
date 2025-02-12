@@ -1,32 +1,52 @@
 package com.example.rdd.Service;
 
 import com.example.rdd.Domain.AppUser.AppUser;
-import com.example.rdd.Domain.AppUser.AppUserDetails;
+import com.example.rdd.Domain.AppUser.ChangeCredentialsRequest;
+import com.example.rdd.Domain.AppUserCollaborationType.AppUserCollaborationType;
+import com.example.rdd.Domain.CollaborationType.CollaborationType;
+import com.example.rdd.Repository.AppUserCollaborationTypeRepository;
 import com.example.rdd.Repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Primary
-public class AppUserService extends GenericService<AppUser, Long> /*implements UserDetailsService*/ {
-
+public class AppUserService extends GenericService<AppUser, Long> {
 
     @Autowired
     AppUserRepository repository;
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return repository.loadUserByUsername(username);
+    @Autowired
+    AppUserCollaborationTypeRepository appUserCollaborationTypeRepository;
+
+    @Autowired
+    CollaborationTypeService collaborationTypeService;
+
+//    public void changeUserCredentials(final ChangeCredentialsRequest request) {
+//        final var user = repository.findById(request.appUser().getId()).orElseThrow();
+//        user.toBuilder().role(request.appUser().getRole()).build();
 //    }
 //
-//    public AppUser create(final AppUser entity) {
-//        final var encodedPassword = passwordEncoder.encode(entity.getPassword());
-//        final var user = entity.toBuilder()
-//                .password(encodedPassword)
-//                .build();
-//        return repository.save(user);
+//    private void changeCollaborations(final AppUser appUser, final List<CollaborationType> collaborationTypes) {
+////        final var excludedCollaborations = getCurrentCollaborationTypes(appUser).stream()
+//
+//        collaborationTypes.forEach(collaborationType -> {
+//            final var collaboration = collaborationTypeService.findById(collaborationType.getId()).orElseThrow();
+//            appUserCollaborationTypeRepository.save(AppUserCollaborationType.builder()
+//                    .collaborationType(collaboration)
+//                    .user(appUser)
+//                    .build());
+//        });
+//    }
+//
+//    private List<CollaborationType> getCurrentCollaborationTypes(AppUser appUser) {
+//        return appUserCollaborationTypeRepository.findAppUserCollaborationTypesByUser(appUser)
+//                .stream()
+//                .map(AppUserCollaborationType::getCollaborationType)
+//                .toList();
 //    }
 }
