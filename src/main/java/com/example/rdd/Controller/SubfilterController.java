@@ -1,5 +1,6 @@
 package com.example.rdd.Controller;
 
+import com.example.rdd.Controller.Generic.GenericController;
 import com.example.rdd.Domain.Subfilter.Subfilter;
 import com.example.rdd.Service.FilterService;
 import com.example.rdd.Service.SubfilterService;

@@ -1,4 +1,4 @@
-package com.example.rdd.Controller;
+package com.example.rdd.Controller.Generic;
 
 import com.example.rdd.Service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;

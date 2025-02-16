@@ -1,5 +1,6 @@
 package com.example.rdd.Controller;
 
+import com.example.rdd.Controller.Generic.GenericController;
 import com.example.rdd.Domain.Platform.Platform;
 import com.example.rdd.Domain.Platform.PlatformRequestDTO;
 import com.example.rdd.Domain.Platform.PlatformResponseDTO;

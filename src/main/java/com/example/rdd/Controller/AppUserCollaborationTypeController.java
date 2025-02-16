@@ -1,13 +1,10 @@
 package com.example.rdd.Controller;
 
+import com.example.rdd.Controller.Generic.GenericController;
 import com.example.rdd.Domain.AppUser.AppUserResponseDTO;
 import com.example.rdd.Domain.AppUserCollaborationType.AppUserCollaborationType;
 import com.example.rdd.Domain.CollaborationType.CollaborationType;
-import com.example.rdd.Domain.Platform.Platform;
-import com.example.rdd.Domain.PlatformSubfilter.PlatformSubfilter;
-import com.example.rdd.Domain.Subfilter.Subfilter;
 import com.example.rdd.Service.AppUserCollaborationTypeService;
-import com.example.rdd.Service.PlatformSubfilterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
