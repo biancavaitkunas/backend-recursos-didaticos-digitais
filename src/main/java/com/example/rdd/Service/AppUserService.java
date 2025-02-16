@@ -1,17 +1,12 @@
 package com.example.rdd.Service;
 
 import com.example.rdd.Domain.AppUser.AppUser;
-import com.example.rdd.Domain.AppUser.ChangeCredentialsRequest;
-import com.example.rdd.Domain.AppUserCollaborationType.AppUserCollaborationType;
-import com.example.rdd.Domain.CollaborationType.CollaborationType;
 import com.example.rdd.Repository.AppUserCollaborationTypeRepository;
 import com.example.rdd.Repository.AppUserRepository;
+import com.example.rdd.Service.Generic.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @Primary

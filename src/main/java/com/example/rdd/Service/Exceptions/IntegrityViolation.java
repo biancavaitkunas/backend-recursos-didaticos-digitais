@@ -1,4 +1,4 @@
-package com.example.rdd.Service.exceptions;
+package com.example.rdd.Service.Exceptions;
 
 public class IntegrityViolation extends RuntimeException {
 

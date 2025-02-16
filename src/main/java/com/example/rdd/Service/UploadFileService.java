@@ -2,6 +2,7 @@ package com.example.rdd.Service;
 
 import com.example.rdd.Domain.UploadFile.UploadFile;
 import com.example.rdd.Repository.UploadFileRepository;
+import com.example.rdd.Service.Generic.GenericService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

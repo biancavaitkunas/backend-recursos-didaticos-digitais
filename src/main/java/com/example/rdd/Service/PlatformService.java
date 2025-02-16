@@ -6,6 +6,7 @@ import com.example.rdd.Domain.Platform.PlatformResponseDTO;
 import com.example.rdd.Domain.PlatformSubfilter.PlatformSubfilter;
 import com.example.rdd.Domain.Subfilter.Subfilter;
 import com.example.rdd.Repository.PlatformRepository;
+import com.example.rdd.Service.Generic.GenericService;
 import com.example.rdd.Util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

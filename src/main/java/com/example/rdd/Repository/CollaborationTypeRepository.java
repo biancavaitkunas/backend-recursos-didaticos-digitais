@@ -1,7 +1,6 @@
 package com.example.rdd.Repository;
 
 import com.example.rdd.Domain.CollaborationType.CollaborationType;
-import org.aspectj.lang.annotation.RequiredTypes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

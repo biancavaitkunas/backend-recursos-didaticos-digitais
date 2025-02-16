@@ -3,8 +3,6 @@ package com.example.rdd.Domain.AppUserCollaborationType;
 import com.example.rdd.Domain.AppUser.AppUser;
 import com.example.rdd.Domain.Auditable;
 import com.example.rdd.Domain.CollaborationType.CollaborationType;
-import com.example.rdd.Domain.Platform.Platform;
-import com.example.rdd.Domain.Subfilter.Subfilter;
 import jakarta.persistence.*;
 import lombok.*;
 

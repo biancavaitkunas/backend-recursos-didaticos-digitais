@@ -1,6 +1,6 @@
 package com.example.rdd.Controller.Generic;
 
-import com.example.rdd.Service.GenericService;
+import com.example.rdd.Service.Generic.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

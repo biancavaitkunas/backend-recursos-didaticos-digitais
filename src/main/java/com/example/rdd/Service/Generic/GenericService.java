@@ -1,4 +1,4 @@
-package com.example.rdd.Service;
+package com.example.rdd.Service.Generic;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Id;
